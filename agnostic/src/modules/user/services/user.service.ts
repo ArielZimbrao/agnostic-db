@@ -13,4 +13,12 @@ export class UserService {
 
         this.databaseService.alter(sql);
     }
+
+    async consultaUser(name: string) {
+        const sql = `
+        SELECT * FROM
+        WHERE nome = ${name}`;
+
+        return this.databaseService.consult(sql);
+    }
 }

@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 import { UserService } from '../services/user.service';
 import { User } from '../entity/user.entity';
 
@@ -9,5 +9,12 @@ export class UserController {
     @Post('save')
     async saveUser(@Body() user: User) {
         this.userServide.saveUser(user);
+    }
+
+    @Get('consulta/:nome')
+    async consulta(
+        @Param('nome') name: string,
+    ) {
+        return this.userServide.consultaUser(name);
     }
 }
